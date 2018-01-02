@@ -1,15 +1,15 @@
 <?php include 'header.php'; ?>
-<?php if(!$userid) { ?>
+<?php if(!$sessao) { ?>
     <header>
         <img src="<?php echo $url?>/library/images/logos/logo-termometro.png" alt="IBC - Termômetro da Felicidade">
     </header>
     <section class="content">
         <p class="boasVindas">
             A busca pela felicidade é contínua, constante e eterna. É ela que nos move e não deixa a vida ficar sem sentido. Você sabe qual o seu grau de felicidade? Conseguimos uma maneira fácil e rápida de medir como está cada área da sua vida. Bastam alguns cliques para responder as perguntas a seguir e verificar o seu grau de felicidade atual. No final do teste, compartilhe seu resultado e convide seus amigos!
+            
         </p>
 
-        <a id="comecar-teste" href="<?php echo $loginUrl; ?>" class="btn btn-2 btn-2h" target="_top">Começar o seu teste</a>
-
+        <?php require_once('modal-acesso.php');?>
     </section>
 <?php } else { ?>
     <section id="paginas">
@@ -35,7 +35,7 @@
         </div>
     </section>
 <?php } ?>
-<?php if(!$userid) {?>
+<?php if(!@$_SESSION['user']) {?>
 <footer>
     <ul class="logos">
         <li>

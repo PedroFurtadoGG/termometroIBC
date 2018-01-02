@@ -1,5 +1,16 @@
-<head>
+<?php require_once('functions.php'); ?><!DOCTYPE html>
+<?php
+$score = isset($_GET['score']) ? $_GET['score'] : 0 ;
+$temp = isset($_GET['temp']) ? $_GET['temp'] : '' ;
+?>
 
+    <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+
+    <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+    
+    <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+
+    <!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta charset="utf-8">
@@ -58,7 +69,7 @@ if ($score<34 and $score>0) {
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800' rel='stylesheet' type='text/css'>
-
+    <link rel="stylesheet" href="<?php echo $url;?>/library/css/modal.css">
     <link rel="stylesheet" href="<?php echo $url ?>/library/css/main.css">
 
 </head>

@@ -1,27 +1,5 @@
-<?php
-session_start();
-
-$score = isset($_GET['score']) ? $_GET['score'] : 0 ;
-
-$temp = isset($_GET['temp']) ? $_GET['temp'] : '' ;
-
-require 'functions/functions.php';
-?>
-
-<!doctype html>
-
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
-
 <?php require_once('head.php') ;?>
-
 <body>
-
 <!-- Google Tag Manager -->
 
 <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-M3XSLS"
