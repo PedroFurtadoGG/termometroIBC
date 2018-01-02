@@ -9,8 +9,8 @@
     </div>
     <section class="perguntas">
         <?php
-        $questions = $database->getQuestions("area1");
-        $active = ' ativo';
+            $questions = $database->getQuestions("area1");
+            $active = ' ativo';
         foreach($questions as $question) :
             ?>
             <div class="item<?php echo $active; ?>">

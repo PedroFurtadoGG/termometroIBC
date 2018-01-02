@@ -1,5 +1,5 @@
 <?php include 'header.php'; ?>
-<?php if(!$userid) {?>
+<?php if(!$_SESSION['emailUsu']) {?>
     <header>
         <img src="library/images/logos/logo-termometro.png" alt="IBC - Termômetro da Felicidade">
     </header>
@@ -8,7 +8,7 @@
             A busca pela felicidade é contínua, constante e eterna. É ela que nos move e não deixa a vida ficar sem sentido. Você sabe qual o seu grau de felicidade? Conseguimos uma maneira fácil e rápida de medir como está cada área da sua vida. Bastam alguns cliques para responder as perguntas a seguir e verificar o seu grau de felicidade atual. No final do teste, compartilhe seu resultado e convide seus amigos!
         </p>
 
-        <a id="comecar-teste" href="<?php echo $loginUrl; ?>" class="btn btn-2 btn-2h" target="_top">Começar o seu teste</a>
+        <?php include('modal-acesso.php'); ?>
 
     </section>
 <?php } else { ?>
@@ -35,14 +35,15 @@
         </div>
     </section>
 <?php } ?>
-<?php if(!$userid) {?>
+
+<?php if(!$_SESSION['emailUsu']) {?>
 <footer>
     <ul class="logos">
         <li>
-            <img src="library/images/logos/logo-ibc.png" alt="IBC - Instituto Brasileiro de Coaching">
+            <img src="<?php echo $url;?>library/images/logos/logo-ibc.png" alt="IBC - Instituto Brasileiro de Coaching">
         </li>
         <li>
-            <img src="library/images/logos/logo-jrm.png" alt="José Roberto Marques">
+            <img src="<?php echo $url;?>library/images/logos/logo-jrm.png" alt="José Roberto Marques">
         </li>
     </ul>
     <p class="copy">
@@ -51,7 +52,7 @@
         Coaching e Psicologia Positiva, Todos os direitos reservados
     </p>
     <p>&nbsp;</p>
-    <p style="width:257px;margin-top:0;margin-right:auto;margin-bottom:0;margin-left:auto;"><img src="library/images/logos/logotipo_mestre_ao5.png" alt="Agência Mestre e AO5" style="width:100%;height:auto;"></p>
+    <p style="width:257px;margin-top:0;margin-right:auto;margin-bottom:0;margin-left:auto;"><img src="<?php echo $url;?>ibrary/images/logos/logotipo_mestre_ao5.png" alt="Agência Mestre e AO5" style="width:100%;height:auto;"></p>
 </footer>
 <?php } ?>
 <?php include 'footer.php';?>

@@ -1,62 +1,22 @@
 <?php
 
+//header('Content-type: text/html; charset=UTF-8');
 
+session_name("Login"); // verifica conceito
+session_start(); // verifica conceito
 
-class Database {
+$BANCO  = "termometro";
+$SERVER = "127.0.0.1";
+$USER   = "root";
+$SENHA  = "";
+$CONNECT_X = mysql_connect($SERVER,$USER,$SENHA);
+$CONNECT   = mysql_select_db("$BANCO", $CONNECT_X);
+$url = 'http://localhost/termometro';
+$score = isset($_GET['score']) ? $_GET['score'] : 0 ;
+$temp = isset($_GET['temp']) ? $_GET['temp'] : '' ;
 
-
-
-    private $_pdo;
-
-//    private $_username_db = 'root';
-
-//    private $_password_db = 'teste';
-
-    private $_username_db = 'ibcdb2017';
-
-    private $_password_db = 'dBF1V#K4';
-
-
-
-    function __construct() {
-
-        $this->_pdo= new PDO(
-
-            'mysql:dbname=ibc_termometrofelicidade;host=ibcdb2017.c06pwdbkh2nm.us-east-1.rds.amazonaws.com;',
-
-            $this->_username_db,
-
-            $this->_password_db,
-
-            array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")
-
-        );
-
-    }
-
-
-
-    function __destruct(){
-
-        $this->CloseConn();
-
-    }
-
-
-
-    public function CloseConn(){
-
-        if($this->_pdo){
-
-            $this->_pdo = NULL;
-
-        }
-
-    }
-
-
-
-    public function saveUser($uid, $name, $email, $birthday, $gender, $location){
+class xxt {
+    public static function saveUser($uid, $name, $email, $birthday, $gender, $location){
 
         $sql = "INSERT INTO `users` (`uid`, `name`, `email`, `birthday`, `gender`, `location`) VALUES ('$uid', '$name', '$email', '$birthday', '$gender', '$location')";
 
@@ -66,7 +26,7 @@ class Database {
 
 
 
-    public function userExists($uid){
+    public static function userExists($uid){
 
         $sql = "SELECT * FROM `users` WHERE `uid` = '$uid'";
 
@@ -86,7 +46,7 @@ class Database {
 
 
 
-    public function getUser($uid){
+    public static function getUser($uid){
 
         $sql = "SELECT * FROM `users` WHERE `uid` = '$uid'";
 
@@ -102,7 +62,7 @@ class Database {
 
 
 
-    public function answered($uid){
+    public static function answered($uid){
 
         $sql = "SELECT * FROM `users` WHERE `uid` = '$uid' AND result IS NOT NULL";
 
@@ -122,7 +82,7 @@ class Database {
 
 
 
-    public function saveArea($uid, $area, $value) {
+    public static function saveArea($uid, $area, $value) {
 
         $sql = "UPDATE `users` SET $area = '$value' WHERE uid='$uid';";
 
@@ -132,7 +92,7 @@ class Database {
 
 
 
-    public function saveResult($uid, $area1, $area2, $area3, $area4, $result) {
+    public static function saveResult($uid, $area1, $area2, $area3, $area4, $result) {
 
         $sql = "UPDATE `users` SET area1 = '$area1', area2 = '$area2', area3 = '$area3', area4 = '$area4', result = '$result' WHERE uid='$uid';";
 
@@ -148,7 +108,7 @@ class Database {
 
 
 
-    public function unanswer($uid){
+    public static function unanswer($uid){
 
         $sql = "UPDATE `users` SET area1 = NULL, area2 = NULL, area3 = NULL, area4 = NULL, `result` = NULL WHERE uid='$uid'";
 
@@ -158,7 +118,7 @@ class Database {
 
 
 
-    public function getFriends($uids)
+    public static function getFriends($uids)
 
     {
 
@@ -178,7 +138,7 @@ class Database {
 
 
 
-    public function getUsers($page = 1, $limit = 50, $order = '', $direction = 'asc', $search = ''){
+    public static function getUsers($page = 1, $limit = 50, $order = '', $direction = 'asc', $search = ''){
 
         $params = array();
 
@@ -268,7 +228,7 @@ class Database {
 
 
 
-    public function getUsersExport(){
+    public static function getUsersExport(){
 
         $sql = "SELECT u.name, u.email, u.gender, u.location,
 
@@ -300,7 +260,7 @@ class Database {
 
 
 
-    public function getStats() {
+    public static function getStats() {
 
         $stats = new stdClass();
 
@@ -574,7 +534,7 @@ class Database {
 
 
 
-    public function export($test, $date)
+    public static function export($test, $date)
 
     {
 
@@ -664,7 +624,7 @@ class Database {
 
 
 
-    public function sendUserToRdStation($uid, $tag = 'app-termometro')
+    public static function sendUserToRdStation($uid, $tag = 'app-termometro')
 
     {
 
@@ -736,7 +696,7 @@ class Database {
 
 
 
-    public function getQuestions($area = '')
+    public static function getQuestions($area = '')
 
     {
 
@@ -770,7 +730,7 @@ class Database {
 
 
 
-    public function insertQuestion($text, $category)
+    public static function insertQuestion($text, $category)
 
     {
 
@@ -794,7 +754,7 @@ class Database {
 
 
 
-    public function deleteQuestion($question_id)
+    public static function deleteQuestion($question_id)
 
     {
 
@@ -806,7 +766,7 @@ class Database {
 
 
 
-    public function updateQuestionOrder($question_id, $area, $order)
+    public static function updateQuestionOrder($question_id, $area, $order)
 
     {
 
