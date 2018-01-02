@@ -1,59 +1,27 @@
 <?php
 
+$BANCO  = "termometro";
+$SERVER = "127.0.0.1";
+$USER   = "root";
+$SENHA  = "";
 
+$CONNECT_X = mysql_connect($SERVER,$USER,$SENHA);
+$CONNECT   = mysql_select_db("$BANCO", $CONNECT_X);
+$url = 'http://localhost/termometro';
+//define('URL','http://localhost/termometro/');
 
-class Database {
+class functions {
 
-
-
-    private $_pdo;
-
-//    private $_username_db = 'root';
-
-//    private $_password_db = 'teste';
-
-    private $_username_db = 'ibcdb2017';
-
-    private $_password_db = 'dBF1V#K4';
-
-
-
-    function __construct() {
-
-        $this->_pdo= new PDO(
-
-            'mysql:dbname=ibc_termometrofelicidade;host=ibcdb2017.c06pwdbkh2nm.us-east-1.rds.amazonaws.com;',
-
-            $this->_username_db,
-
-            $this->_password_db,
-
-            array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")
-
-        );
-
-    }
-
-
-
-    function __destruct(){
-
-        $this->CloseConn();
-
-    }
-
-
-
-    public function CloseConn(){
-
-        if($this->_pdo){
-
-            $this->_pdo = NULL;
-
+    public function acesso(){
+        if (!empty($_POST)){
+           $nome            = $_POST['nome'];
+           $email           = $_POST['email'];
+           $sql             = mysql_query("SELECT * FROM users WHERE nome = '$nome' AND email = '$email'");
+           $SESSION['user'] = $email;
+           redirect('index.php');
+        }else{
         }
-
     }
-
 
 
     public function saveUser($uid, $name, $email, $birthday, $gender, $location){

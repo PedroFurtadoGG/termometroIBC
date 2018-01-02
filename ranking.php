@@ -92,36 +92,33 @@
     <a href="#" class="btnConvideM btn btn-2 btn-2h">Convidar amigos</a>
 
     <?php
-    $friend_ids = array();
-    if($friends['data'])
-    {
+        $friend_ids = array();
+        if($friends['data']){
         foreach ($friends['data'] as $friend_data) {
             $friend_ids[] = $friend_data['id'];
         }
-
         $user_friends = $database->getFriends($friend_ids);
         if (count($user_friends) > 0) {
-            ?>
-            <section class="amigosRanking">
-                <ul>
-                    <?php
-                    foreach ($user_friends as $friend) :
-                        $nivel = $friend['result'] > 66 ? 1 : ($friend['result'] > 33 ? 2 : 3);
-                        ?>
-                        <li>
-                            <img src="http://graph.facebook.com/<?php echo $friend['uid']; ?>/picture?type=square" />
-                            <div class="nivel<?php echo $nivel;?>">
-                                <?php echo $friend['result']?>
-                            </div>
-                            <p><?php echo $friend['name']; ?></p>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            </section>
-        <?
-        } //fim if user count > 0
-    } //fim if friends data
     ?>
+        <section class="amigosRanking">
+            <ul>
+                <?php
+                foreach ($user_friends as $friend) :
+                    $nivel = $friend['result'] > 66 ? 1 : ($friend['result'] > 33 ? 2 : 3);
+                ?>
+                    <li>
+                        <img src="http://graph.facebook.com/<?php echo $friend['uid']; ?>/picture?type=square" />
+                        <div class="nivel<?php echo $nivel;?>">
+                            <?php echo $friend['result']?>
+                        </div>
+                        <p><?php echo $friend['name']; ?></p>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </section>
+        <?php } //fim if user count > 0
+         } //fim if friends data
+        ?>
 
     <section class="parabensBox">
         <img src="http://graph.facebook.com/<?php echo $userid; ?>/picture?type=large" alt="Perfil">

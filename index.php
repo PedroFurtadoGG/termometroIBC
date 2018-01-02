@@ -1,7 +1,7 @@
 <?php include 'header.php'; ?>
-<?php if(!$userid) {?>
+<?php if(!$userid) { ?>
     <header>
-        <img src="library/images/logos/logo-termometro.png" alt="IBC - Termômetro da Felicidade">
+        <img src="<?php echo $url?>/library/images/logos/logo-termometro.png" alt="IBC - Termômetro da Felicidade">
     </header>
     <section class="content">
         <p class="boasVindas">
@@ -39,10 +39,10 @@
 <footer>
     <ul class="logos">
         <li>
-            <img src="library/images/logos/logo-ibc.png" alt="IBC - Instituto Brasileiro de Coaching">
+            <img src="<?php echo $url ?>/library/images/logos/logo-ibc.png" alt="IBC - Instituto Brasileiro de Coaching">
         </li>
         <li>
-            <img src="library/images/logos/logo-jrm.png" alt="José Roberto Marques">
+            <img src="<?php echo $url ?>/library/images/logos/logo-jrm.png" alt="José Roberto Marques">
         </li>
     </ul>
     <p class="copy">
