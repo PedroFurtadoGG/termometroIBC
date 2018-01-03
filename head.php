@@ -77,6 +77,6 @@ if ($score<34 and $score>0) {
 
     <link href='https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800' rel='stylesheet' type='text/css'>
 
-    <link rel="stylesheet" href="library/css/main.css">
-    <link rel="stylesheet" href="library/css/modal.css">
+    <link rel="stylesheet" href="<?php echo $url;?>/library/css/main.css">
+    <link rel="stylesheet" href="<?php echo $url;?>/library/css/modal.css">
 </head>

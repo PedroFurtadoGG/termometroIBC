@@ -15,7 +15,7 @@ $url = 'http://localhost/termometro';
 $score = isset($_GET['score']) ? $_GET['score'] : 0 ;
 $temp = isset($_GET['temp']) ? $_GET['temp'] : '' ;
 
-class xxt {
+class fs {
     public static function saveUser($uid, $name, $email, $birthday, $gender, $location){
 
         $sql = "INSERT INTO `users` (`uid`, `name`, `email`, `birthday`, `gender`, `location`) VALUES ('$uid', '$name', '$email', '$birthday', '$gender', '$location')";

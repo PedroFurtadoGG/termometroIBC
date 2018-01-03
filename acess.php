@@ -1,7 +1,5 @@
 <?php 
 require_once('functions/functions.php');
-
-	
 	$nome = $_POST['nome'];
 	
 	$strqry =  mysql_query("SELECT * FROM users WHERE name = '".$nome."'");
@@ -17,29 +15,22 @@ require_once('functions/functions.php');
 		$_SESSION['logado'] = 1;
 		$_SESSION['emailUsu'] = $usu['email'];
 		$_SESSION['nomeUsu'] = $usu['name'];
+		$_SESSION['id'] = $usu['id'];
 		//redirect 
 		?>
 		<script>
 		alert('Login efetuado com sucesso!');
-		window.location='<?php echo $url; ?>';
+		window.location='<?php echo $url; ?>/ambiente-pessoal.php';
 		</script>
 	<?php
 	}else{
 		
 	?>
-
-	
 		<script>
 				alert('Email ou senha incorretos.Por favor tente novamente!');
 				window.location.href='<?php echo $url; ?>';
 		</script>
 		<?php
-		
 	}
 	
-	
-	
-
-
-
 ?>

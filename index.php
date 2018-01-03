@@ -1,7 +1,7 @@
 <?php include 'header.php'; ?>
-<?php if(!@$_SESSION['emailUsu']) {?>
+
 <header>
-  <img src="<?php echo $url;?>library/images/logos/logo-termometro.png" alt="IBC - Termômetro da Felicidade">
+  <img src="<?php echo $url;?>/library/images/logos/logo-termometro.png" alt="IBC - Termômetro da Felicidade">
 </header>
 <section class="content">
   <p class="boasVindas">
@@ -9,27 +9,6 @@
   </p>
   <?php include('modal-acesso.php'); ?>
 </section>
-<?php } else { ?>
-<section id="paginas">
-  <?php include 'topo-termometro.php'; ?>
-  <div class="content">
-    <?php include 'ambiente-pessoal-cidade.php'; ?>
-    <?php include 'ambiente-pessoal.php'; ?>
-    <?php include 'parabens-pessoal.php'; ?>
-    <?php include 'ambiente-profissional-cidade.php'; ?>
-    <?php include 'ambiente-profissional.php'; ?>
-    <?php include 'parabens-profissional.php'; ?>
-    <?php include 'ambiente-relacionamento-cidade.php'; ?>
-    <?php include 'ambiente-relacionamento.php'; ?>
-    <?php include 'parabens-relacionamento.php'; ?>
-    <?php include 'ambiente-qualidade-cidade.php'; ?>
-    <?php include 'ambiente-qualidade.php'; ?>
-    <?php include 'parabens-qualidade.php'; ?>
-    <?php include 'ranking.php'; ?>
-  </div>
-</section>
-<?php } ?>
-<?php if(!@$_SESSION['emailUsu']) {?>
 <footer>
   <ul class="logos">
     <li>
@@ -50,5 +29,4 @@
     <img src="<?php echo $url;?>/library/images/logos/logotipo_mestre_ao5.png" alt="Agência Mestre e AO5" style="width:100%;height:auto;">
   </p>
 </footer>
-<?php } ?>
 <?php include 'footer.php';?>

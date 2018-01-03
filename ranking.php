@@ -1,3 +1,4 @@
+<?php require_once('header.php'); ?>
 <section id="ranking" class="ranking page">
     <section class="topoRanking">
         <div class="resultado">
