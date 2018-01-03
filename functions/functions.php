@@ -23,9 +23,6 @@ class xxt {
         $this->_pdo->query($sql);
 
     }
-
-
-
     public static function userExists($uid){
 
         $sql = "SELECT * FROM `users` WHERE `uid` = '$uid'";

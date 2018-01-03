@@ -118,7 +118,7 @@
                     <?php endforeach; ?>
                 </ul>
             </section>
-        <?
+        <?php
         } //fim if user count > 0
     } //fim if friends data
     ?>

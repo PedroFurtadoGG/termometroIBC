@@ -7,22 +7,23 @@
         <div class="cabelo-2 posicionamento"></div>
     </div>
 
-    <section class="perguntas">
-        <?php
-        $questions = $database->getQuestions("area2");
-        foreach($questions as $question) :
-            ?>
-            <div class="item">
+     <section class="perguntas">
+        <?php			
+			$questions = mysql_query("SELECT * FROM questions WHERE area = 'area2'");
+			$active = ' ativo';
+			while($row = mysql_fetch_assoc($questions)){
+        ?>
+            <div class="item<?php echo $active; ?>">
                 <ul class="listaPerguntas">
                     <li>
                         <p>
-                            <span><?php echo $question['category'] ?>:</span>
-                            <?php echo $question['text'] ?>
+                            <span><?php echo utf8_encode($row['category']); ?>:</span>
+                            <?php echo utf8_encode($row['text']); ?>
                         </p>
                     </li>
                 </ul>
                 <?php include 'box-respostas.php'; ?>
             </div>
-        <?php endforeach; ?>
+			<?php } ?>
     </section>
 </section>
