@@ -7,6 +7,8 @@ session_start(); // verifica conceito
 
 $BANCO  = "termometro";
 $SERVER = "127.0.0.1";
+//$BANCO = "ibc_termometrofelicidade";
+//$SERVER =  'ibcdb2017.c06pwdbkh2nm.us-east-1.rds.amazonaws.com',
 $USER   = "root";
 $SENHA  = "";
 $CONNECT_X = mysql_connect($SERVER,$USER,$SENHA);
@@ -15,7 +17,7 @@ $url = 'http://localhost/termometro';
 $score = isset($_GET['score']) ? $_GET['score'] : 0 ;
 $temp = isset($_GET['temp']) ? $_GET['temp'] : '' ;
 
-class fs {
+class general {
     public static function saveUser($uid, $name, $email, $birthday, $gender, $location){
 
         $sql = "INSERT INTO `users` (`uid`, `name`, `email`, `birthday`, `gender`, `location`) VALUES ('$uid', '$name', '$email', '$birthday', '$gender', '$location')";

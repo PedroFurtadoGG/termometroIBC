@@ -1,0 +1,31 @@
+body{font-family: 'Quicksand', sans-serif;}
+img{max-width: 100%; height: auto;}
+
+.breadcrub{
+	background: #ebe7de;
+	color: #00618f;
+}
+.breadcrub h3{
+	font-size: 23px;
+}
+
+.content{
+	background: #ececea;
+}
+
+.midias{
+	color: #00618f;
+}
+.midias .links a{
+	padding: 5px 12px;
+}
+
+.icons-radio{
+	background: url(images/mascara-termometro.png) no-repeat;
+}
+
+.termometro label{
+	color: #00618f;
+}
+.icons-radio input{
+}
