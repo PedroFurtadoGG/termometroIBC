@@ -17,6 +17,7 @@
             <div class="ambientes col-12">
 
                 <div class="ambiente-qdv row">
+                
                     <div class="col-sm-9 pr-0 pt-4">
                         <img src="<?php echo $url;?>/library/images/ambiente-pessoal-on.png" alt="">
                     </div>
