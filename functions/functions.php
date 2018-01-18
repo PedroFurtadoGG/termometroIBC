@@ -5,27 +5,83 @@
 session_name("Login"); // verifica conceito
 session_start(); // verifica conceito
 
-$BANCO  = "termometro";
-$SERVER = "127.0.0.1";
-//$BANCO = "ibc_termometrofelicidade";
-//$SERVER =  'ibcdb2017.c06pwdbkh2nm.us-east-1.rds.amazonaws.com',
-$USER   = "root";
-$SENHA  = "";
+//$BANCO  = "termometro";
+//$SERVER = "127.0.0.1";
+$BANCO = "ibc_termometrofelicidade";
+$SERVER =  'ibcdb2017.c06pwdbkh2nm.us-east-1.rds.amazonaws.com',
+$USER   = "ibcdb2017";
+$SENHA  = "dBF1V#K4";
 $CONNECT_X = mysql_connect($SERVER,$USER,$SENHA);
 $CONNECT   = mysql_select_db("$BANCO", $CONNECT_X);
-$url = 'http://localhost/termometro';
+$url = 'http://www.ibccoaching.com.br/app-termometro-felicidade/';
 $score = isset($_GET['score']) ? $_GET['score'] : 0 ;
 $temp = isset($_GET['temp']) ? $_GET['temp'] : '' ;
 
-class general {
-    public static function saveUser($uid, $name, $email, $birthday, $gender, $location){
+class Database {
+
+
+
+    private $_pdo;
+
+//    private $_username_db = 'root';
+
+//    private $_password_db = 'teste';
+
+    private $_username_db = 'ibcdb2017';
+
+    private $_password_db = 'dBF1V#K4';
+
+
+
+    function __construct() {
+
+        $this->_pdo= new PDO(
+
+            'mysql:dbname=ibc_termometrofelicidade;host=ibcdb2017.c06pwdbkh2nm.us-east-1.rds.amazonaws.com;',
+
+            $this->_username_db,
+
+            $this->_password_db,
+
+            array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")
+
+        );
+
+    }
+
+
+
+    function __destruct(){
+
+        $this->CloseConn();
+
+    }
+
+
+
+    public function CloseConn(){
+
+        if($this->_pdo){
+
+            $this->_pdo = NULL;
+
+        }
+
+    }
+
+
+
+    public function saveUser($uid, $name, $email, $birthday, $gender, $location){
 
         $sql = "INSERT INTO `users` (`uid`, `name`, `email`, `birthday`, `gender`, `location`) VALUES ('$uid', '$name', '$email', '$birthday', '$gender', '$location')";
 
         $this->_pdo->query($sql);
 
     }
-    public static function userExists($uid){
+
+
+
+    public function userExists($uid){
 
         $sql = "SELECT * FROM `users` WHERE `uid` = '$uid'";
 
@@ -45,7 +101,7 @@ class general {
 
 
 
-    public static function getUser($uid){
+    public function getUser($uid){
 
         $sql = "SELECT * FROM `users` WHERE `uid` = '$uid'";
 
@@ -61,7 +117,7 @@ class general {
 
 
 
-    public static function answered($uid){
+    public function answered($uid){
 
         $sql = "SELECT * FROM `users` WHERE `uid` = '$uid' AND result IS NOT NULL";
 
@@ -81,7 +137,7 @@ class general {
 
 
 
-    public static function saveArea($uid, $area, $value) {
+    public function saveArea($uid, $area, $value) {
 
         $sql = "UPDATE `users` SET $area = '$value' WHERE uid='$uid';";
 
@@ -91,7 +147,7 @@ class general {
 
 
 
-    public static function saveResult($uid, $area1, $area2, $area3, $area4, $result) {
+    public function saveResult($uid, $area1, $area2, $area3, $area4, $result) {
 
         $sql = "UPDATE `users` SET area1 = '$area1', area2 = '$area2', area3 = '$area3', area4 = '$area4', result = '$result' WHERE uid='$uid';";
 
@@ -107,7 +163,7 @@ class general {
 
 
 
-    public static function unanswer($uid){
+    public function unanswer($uid){
 
         $sql = "UPDATE `users` SET area1 = NULL, area2 = NULL, area3 = NULL, area4 = NULL, `result` = NULL WHERE uid='$uid'";
 
@@ -117,7 +173,7 @@ class general {
 
 
 
-    public static function getFriends($uids)
+    public function getFriends($uids)
 
     {
 
@@ -137,7 +193,7 @@ class general {
 
 
 
-    public static function getUsers($page = 1, $limit = 50, $order = '', $direction = 'asc', $search = ''){
+    public function getUsers($page = 1, $limit = 50, $order = '', $direction = 'asc', $search = ''){
 
         $params = array();
 
@@ -227,7 +283,7 @@ class general {
 
 
 
-    public static function getUsersExport(){
+    public function getUsersExport(){
 
         $sql = "SELECT u.name, u.email, u.gender, u.location,
 
@@ -259,7 +315,7 @@ class general {
 
 
 
-    public static function getStats() {
+    public function getStats() {
 
         $stats = new stdClass();
 
@@ -533,7 +589,7 @@ class general {
 
 
 
-    public static function export($test, $date)
+    public function export($test, $date)
 
     {
 
@@ -623,7 +679,7 @@ class general {
 
 
 
-    public static function sendUserToRdStation($uid, $tag = 'app-termometro')
+    public function sendUserToRdStation($uid, $tag = 'app-termometro')
 
     {
 
@@ -695,7 +751,7 @@ class general {
 
 
 
-    public static function getQuestions($area = '')
+    public function getQuestions($area = '')
 
     {
 
@@ -729,7 +785,7 @@ class general {
 
 
 
-    public static function insertQuestion($text, $category)
+    public function insertQuestion($text, $category)
 
     {
 
@@ -753,7 +809,7 @@ class general {
 
 
 
-    public static function deleteQuestion($question_id)
+    public function deleteQuestion($question_id)
 
     {
 
@@ -765,7 +821,7 @@ class general {
 
 
 
-    public static function updateQuestionOrder($question_id, $area, $order)
+    public function updateQuestionOrder($question_id, $area, $order)
 
     {
 

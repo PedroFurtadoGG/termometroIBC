@@ -47,7 +47,7 @@
                         </label>
                         <div class="icons-radio d-block py-4 pl-4">
                             
-                            <input type="radio" name="radio<?php echo $x;?>" value="1">
+                            <input type="radio" name="radio<?php echo $x;?>" value="1" required>
                             <input type="radio" name="radio<?php echo $x;?>" value="2">
                             <input type="radio" name="radio<?php echo $x;?>" value="3">
                             <input type="radio" name="radio<?php echo $x;?>" value="4">

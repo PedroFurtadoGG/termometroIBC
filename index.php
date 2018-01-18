@@ -53,7 +53,10 @@
               A busca pela felicidade é contínua, constante e eterna. É ela que nos move e não deixa a vida ficar sem sentido. Você sabe qual o seu grau de felicidade? Conseguimos uma maneira fácil e rápida de medir como está cada área da sua vida. Bastam alguns cliques para responder as perguntas a seguir e verificar o seu grau de felicidade atual. No final do teste, compartilhe seu resultado e convide seus amigos!
             </p>
             <?php include('modal-acesso.php'); ?>
+             <?php include('modal-login.php'); ?>
           </section>
+
+
 <footer>
   <ul class="logos">
     <li>

@@ -18,14 +18,15 @@
                     $exe = mysql_query($query);
                     $linha = mysql_fetch_assoc($exe);
                     $result = $linha['result'];
-                    echo $result;
-                    if($result > '180'){
+                    if($result >= '181' ){
                         $img = '/library/images/share/termometro-resultado-quente.png';
                     }
-                    if($result == '0' || $result <= '90'){
+
+                    if($result >= '0' && $result < '90'){
                         $img = '/library/images/share/termometro-resultado-frio.png';
                     }
-                    if($result > '90' || $result < '180' ){
+
+                    if($result >= '90' && $result <= '180' ){
                         $img = '/library/images/share/termometro-resultado-morno.png';
 
                     }
