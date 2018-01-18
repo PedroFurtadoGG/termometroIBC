@@ -27,13 +27,13 @@ class="close" title="Close Modal">&times;</span>
   <form class="modal-content animate" action="<?php echo $url;?>/acess.php" method="POST">    
     <div class="container">
       <label><b>Nome</b></label>
-      <input type="text" placeholder="Insira seu nome completo" name="nome" required>
+      <input type="text" placeholder="Insira seu nome completo" name="nome" >
       <label><b>Email</b></label>
-      <input type="text" placeholder="Insira seu email" name="email" required>
+      <input type="text" placeholder="Insira seu email" name="email" >
       <label><b>Local(cidade)</b></label>
-      <input type="text" placeholder="Insira sua cidade" name="email" required>
+      <input type="text" placeholder="Insira sua cidade" name="email" >
       <label><b>Idade</b></label>
-      <input type="text" placeholder="Insira sua idade" name="email" required>
+      <input type="text" placeholder="Insira sua idade" name="email" >
       <label><b>Escolaridade</b></label>
       <select id="escolaridade">
         <option>--SELECIONE--</option>
@@ -58,5 +58,3 @@ class="close" title="Close Modal">&times;</span>
     </div>
   </form>
 </div>
-
-Nome  Email Idade Sexo  Local(cidade)     Escolaridade

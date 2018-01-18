@@ -1,63 +1,68 @@
-<?php include 'header.php'; ?>
-<!-- verifica se fez login -->
-<?php if(!@$_SESSION['emailUsu']) {?>
-<script>
-    alert('Por favor valide seu acesso e tente novamente!');
-    window.location.href='<?php echo $url; ?>';
-</script>
-<?php }?>
-<?php include 'topo-termometro.php'; ?>
-<?php include 'ambiente-qualidade-cidade.php'; ?>
-<section id="qualidade" class="page">
-    <div class="ambiente-animado qualidade-vida">
-        <div class="nuvens posicionamento"></div>
-        <div class="sol posicionamento"></div>
-        <div class="roda-gigante posicionamento">
-            <div class="esfera">
-                <div class="carro-1 carro-item laranja posicionamento"></div>
-                <div class="carro-2 carro-item laranja posicionamento"></div>
-                <div class="carro-3 carro-item azul posicionamento"></div>
-                <div class="carro-4 carro-item laranja posicionamento"></div>
-                <div class="carro-5 carro-item laranja posicionamento"></div>
-                <div class="carro-6 carro-item laranja posicionamento"></div>
-                <div class="carro-7 carro-item azul posicionamento"></div>
-                <div class="carro-8 carro-item laranja posicionamento"></div>
-            </div>
-        </div>
-        <div class="ambiente posicionamento"></div>
-        <div class="bicicleta posicionamento"></div>
-        <div class="pescador posicionamento">
-            <div class="braco posicionamento"></div>
-        </div>
-        <div class="bola posicionamento"></div>
-        <div class="perna-1 posicionamento"></div>
-        <div class="perna-2 posicionamento"></div>
-        <div class="garotos posicionamento"></div>
-        <div class="barco posicionamento"></div>
-    </div>
+<?php require_once('head.php'); ?>
+<body>
 
-    <form action="<?php echo $url;?>/save-quality.php" method="post" >
-        <?php
-            $questions = mysql_query("SELECT * FROM questions WHERE area = 'area4'");
-            $active = ' ativo'; 
-            $x = 0;
-            while($row = mysql_fetch_assoc($questions)){
-                $x++;
-        ?>
-            <section class="perguntas">
-                    <div class="item<?php echo $active; ?>">
-                        <ul class="listaPerguntas">
-                            <li>
-                                <p>
-                                    <span><?php echo utf8_encode($row['category']); ?>:</span>
-                                    <?php echo utf8_encode($row['text']); ?>
-                                </p>
-                            </li>
-                        </ul>
-                        <?php include 'box-respostas.php'; ?>
-                    </div>
-            </section>
-        <?php }?>
-        <button id="btnSubmit" class="cancelbtn" type="submit">Enviar</button>
-    </form>
+<?php require_once('header.php');?>
+
+<section class="breadcrub">
+    <div class="container">
+        <div class="col-md-9 mr-auto ml-auto row text-center pt-2 pb-1">
+            <h3 class="text-center col-12"><b>Questionário:</b> Ambiente da Qualidade</h3>
+        </div>
+    </div>
 </section>
+
+<section class="content py-5">
+    <div class="container">
+        <div class="col-md-8 mr-auto ml-auto row">
+            <div class="ambientes col-12">
+
+                <div class="ambiente-qdv row">
+                    <div class="col-sm-9 pr-0 pt-4">
+                        <img src="<?php echo $url;?>/library/images/ambiente-qualidade-vida.png" alt="">
+                    </div>
+                    <div class="col-sm-3 pl-0 pt-4">
+                        <img src="<?php echo $url;?>/library/images/tag-qualidade.png" alt="">
+                    </div>
+                </div><!--FECHA QUALIDADE DE VIDA-->
+
+
+            </div>
+            <form action="<?php echo $url;?>/save-quality.php" method="post" >
+                <?php
+                    $questions = mysql_query("SELECT * FROM questions WHERE area = 'area4' ");
+                    $active = ' ativo'; 
+                    $x = 0;
+                    while($row = mysql_fetch_assoc($questions)){
+                      $x++;
+                ?>
+                    <div class="termometro">
+                        <label for="icons-radio" class="d-block py-3">
+                             <?php echo utf8_encode($row['category']); ?>:  <?php echo utf8_encode($row['text']); ?>
+                        </label>
+                        <div class="icons-radio d-block py-4 pl-4">
+                            
+                            <input type="radio" name="radio<?php echo $x;?>" value="1">
+                            <input type="radio" name="radio<?php echo $x;?>" value="2">
+                            <input type="radio" name="radio<?php echo $x;?>" value="3">
+                            <input type="radio" name="radio<?php echo $x;?>" value="4">
+                            <input type="radio" name="radio<?php echo $x;?>" value="5">
+                            <input type="radio" name="radio<?php echo $x;?>" value="6">
+                            <input type="radio" name="radio<?php echo $x;?>" value="7">
+                            <input type="radio" name="radio<?php echo $x;?>" value="8">
+                            <input type="radio" name="radio<?php echo $x;?>" value="9">
+                            <input type="radio" name="radio<?php echo $x;?>" value="10">
+                        </div>
+                    </div>
+            <?php }?>
+
+            <div class="d-block py-4 text-center">
+                <button id="btnSubmit" class="btn-next" type="submit">Enviar</button>
+            </div>
+            
+            </form>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
