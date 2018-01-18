@@ -12,7 +12,7 @@ require_once('functions/functions.php');
 
 	$area4 = $resp1 + $resp2 + $resp3 + $resp4 + $resp5 + $resp6 + $resp7 + $resp8 + $resp9;
 
-    $sql = "UPDATE `users` SET area4 = '".$area4."' WHERE email = '".$_SESSION['emailUsu']."';";
+    $sql = "UPDATE `users` SET area4 = '".$area4."' WHERE id = '".$_SESSION['id']."';";
      
     $upd = mysql_query($sql);
  	
@@ -24,7 +24,7 @@ require_once('functions/functions.php');
     $rs = mysql_fetch_array(mysql_query($sql3));
     $SUM = $rs['area1'] + $rs['area2'] + $rs['area3'] + $rs['area4'];
 
-    $sql4 = "UPDATE `users` SET result = '".$SUM."' WHERE email = '".$_SESSION['emailUsu']."';";
+    $sql4 = "UPDATE `users` SET result = '".$SUM."' WHERE id = '".$_SESSION['id']."';";
     $resultU = mysql_query($sql4);
     
     $sql5 = "UPDATE results SET result='".$SUM."' WHERE user_id='".$_SESSION['id']."';";

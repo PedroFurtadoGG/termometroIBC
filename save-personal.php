@@ -9,10 +9,9 @@ require_once('functions/functions.php');
 	$resp7 = $_POST['radio7'];
 	$resp8 = $_POST['radio8'];
 	$resp9 = $_POST['radio9'];
-
 	$area1 = $resp1 + $resp2 + $resp3 + $resp4 + $resp5 + $resp6 + $resp7 + $resp8 + $resp9;
 
-    $sql = "UPDATE `users` SET area1 = '".$area1."';";
+    $sql = "UPDATE `users` SET area1 = '".$area1."' WHERE id = '".$_SESSION['id']."';";
 
     $upd = mysql_query($sql);
 

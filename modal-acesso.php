@@ -27,15 +27,15 @@ class="close" title="Close Modal">&times;</span>
   <form class="modal-content animate" action="<?php echo $url;?>/acess.php" method="POST">    
     <div class="container">
       <label><b>Nome</b></label>
-      <input type="text" placeholder="Insira seu nome completo" name="nome" >
+      <input type="text" placeholder="Insira seu nome completo" name="nome" required>
       <label><b>Email</b></label>
-      <input type="text" placeholder="Insira seu email" name="email" >
+      <input type="text" placeholder="Insira seu email" name="email" required>
       <label><b>Local(cidade)</b></label>
-      <input type="text" placeholder="Insira sua cidade" name="email" >
-      <label><b>Idade</b></label>
-      <input type="text" placeholder="Insira sua idade" name="email" >
+      <input type="text" placeholder="Insira sua cidade" name="cidade" required>
+      <label><b>Data Nascimento</b></label>
+      <input type="date" placeholder="Insira sua idade" name="dt_nascimento" required>
       <label><b>Escolaridade</b></label>
-      <select id="escolaridade">
+      <select id="escolaridade" name="escolaridade" required>
         <option>--SELECIONE--</option>
         <option value="ensino-fundamental">Ensino fundamental</option>
         <option value="ensino-fundamental-incompleto">Ensino fundamental incompleto</option>
@@ -45,7 +45,7 @@ class="close" title="Close Modal">&times;</span>
         <option value="ensino-superior-incompleto">Ensino superior incompleto</option>
       </select>
       <label><b>Sexo</b></label>
-      <select id="sexo" style="">
+      <select id="sexo" style="" name="sexo" required>
         <option>--SELECIONE--</option>
         <option value="M">Masculino</option>
         <option value="F">Feminino</option>
